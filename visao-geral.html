@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTTP Wiki</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="assets/css/init.css">
+</head>
+<body>
+  <header>
+    <section class="navbar">
+      <nav class="indigo darken-4">
+        <div class="nav-wrapper">
+          <a href="index.html" class="brand-logo">HTTP Wiki</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li class="active"><a href="visao-geral.html">Visão Geral</a></li>
+            <li><a href="cabecalhos.html">Cabeçalhos HTTP</a></li>
+            <li><a href="requisicoes-http.html">Requisições HTTP</a></li>
+            <li><a href="cookies.html">Cookies HTTP</a></li>
+          </ul>
+        </div>
+      </nav>
+      <ul class="sidenav" id="mobile-demo">
+        <li class="active"><a href="visao-geral.html">Visão Geral</a></li>
+        <li><a href="cabecalhos.html">Cabeçalhos HTTP</a></li>
+        <li><a href="requisicoes-http.html">Requisições HTTP</a></li>
+        <li><a href="cookies.html">Cookies HTTP</a></li>
+      </ul>    
+    </section>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <h2>A visão geral sobre o HTTP</h2>
+      <p>
+        HTTP é um protocolo (protocol) que permite a obtenção de recursos, tais
+        como documentos HTML. É a base de qualquer troca de dados na Web e um protocolo cliente-servidor,
+        o que significa que as requisições são iniciadas pelo destinatário, geralmente um navegador da Web. Um documento
+        completo é reconstruído a partir dos diferentes sub-documentos obtidos, como por exemplo texto, descrição do layout,
+        imagens, vídeos, scripts e muito mais.
+      </p>
+      <img src="assets/img/visao.png" class="center-block responsive-img" alt="Visao geral">
+      <p>Clientes e servidores se comunicam trocando mensagens individuais (em oposição a um fluxo de dados). As
+          mensagens enviadas pelo cliente, geralmente um navegador da Web, são chamadas de solicitações (requests), ou
+          também requisições, e as mensagens enviadas pelo servidor como resposta são chamadas de respostas
+          (responses).</p>
+      <p>Projetado no início da década de 1990, o HTTP é um protocolo extensível que evoluiu ao longo do tempo. É um
+          protocolo de camada de aplicação que é enviado sobre TCP, ou em uma conexão TCP criptografada com TLS,
+          embora
+          qualquer protocolo de transporte confiável possa, teoricamente, ser usado. Devido à sua extensibilidade, ele
+          é
+          usado para não apenas buscar documentos de hipertexto, mas também imagens e vídeos ou publicar conteúdo em
+          servidores, como nos resultados de formulário HTML (veja os elementos <code>&lt;html&gt;</code> e
+          <code>&lt;form&gt;</code>). O HTTP também pode ser
+          usado para buscar partes de documentos para atualizar páginas da Web sob demanda.</p>
+    </section>
+    <section>
+      <h2>Componentes de sistemas baseados em HTTP</h2>
+      <p>O HTTP é um protocolo cliente-servidor: as requisições são enviados por uma entidade, o agente-usuário (ou um proxy em nome dele). A maior parte do tempo, o agente-usuário é um navegador da Web, mas pode ser qualquer coisa, como por exemplo um robô que rastreia a Web para preencher e manter um índice de mecanismo de pesquisa.</p>
+      
+      <p>Cada requisição individual é enviada para um servidor, que irá lidar com isso e fornecer um resultado, chamado de resposta. Entre a solicitação e a resposta existem várias entidades, designadas coletivamente como proxies, que executam operações diferentes e atuam como gateways (intermediários) ou caches, por exemplo.</p>
+      <img src="assets/img/Client-server-chain.png" class="center-block responsive-img" alt="client side">
+      <p>Na realidade, existem muitos outros computadores entre o navegador e o servidor que está tratando a requisição: existem roteadores, modems e muito mais. Graças ao modelo de camadas da Web (layers), essas funcionalidades estão escondidas nas camadas de rede e transporte, respectivamente. O HTTP está no topo da camada de aplicação. Apesar de ser importante diagnosticar problemas de conectividade, os layers abaixo da camada de aplicação são irrelevantes para a descrição do HTTP.</p>
+    </section>
+    <section>
+      <h2>Cliente: o agente-usuário</h2>
+      <p>O user-agent é qualquer ferramenta que age em nome do usuário. Essa função é predominantemente realizada
+        pelo
+        navegador Web; algumas poucas exceções são programas usados por engenheiros e desenvolvedores Web para
+        depurar as suas aplicações.</p>
+    <p>O navegador é sempre a entidade que inicia as requisições. Nunca é o servidor (embora alguns mecanismos
+        tenham sido adicionados ao longo dos anos para simular mensagens iniciadas pelo servidor).</p>
+    <p>Para mostrar uma página Web, o navegador envia uma requisição para buscar o documento HTML da página. Ele
+        então realiza uma análise sintática desse arquivo, buscando requisições adicionais correspondentes a
+        scripts
+        de execução, informações de layout (CSS) para apresentação e subrecursos contidos na página (geralmente
+        imagens e vídeos). Depois o navegador interpreta esses recursos para mostrar ao usuário o documento
+        completo, a página Web. Scripts executados pelo navegador podem buscar mais recursos em fases
+        subsequentes e
+        o navegador atualiza a página Web de acordo.</p>
+    <p>Uma página Web é um documento de hipertexto. Isso significa que algumas partes do texto mostrado são
+        links
+        (vínculos com outras páginas ou recursos da Web), os quais podem ser ativados (normalmente pelo clique
+        do
+        mouse) para buscar uma nova página, permitindo ao usuário redirecionar seu agente-usuário e navegar pela
+        internet. O navegador traduz esses endereços em requisições HTTP e depois interpreta as respostas HTTP
+        para
+        mostrar ao usuário uma resposta transparente.</p>
+    </section>
+    <section>
+      <h2>O servidor de páginas Web</h2>
+      <p>
+        Do outro lado do canal de comunicação está o servidor que serve o documento requisitado pelo
+        usuário. Um
+        servidor se apresenta virtualmente apenas como uma máquina: isto porque o servidor pode ser uma
+        coleção de
+        servidores dividindo a carga (através de uma técnica chamada balanceamento de carga) ou também como
+        um
+        programa complexo que acessa outros servidores (como um cache, um servidor de banco de dados,
+        servidores de
+        e-commerce, etc.), gerando todo ou parte do documento solicitado.
+    </p>
+    <p>Um servidor não é necessáriamente apenas uma máquina, mas vários servidores podem estar hospedados na
+        mesma
+        máquina. Com o HTTP/1.1 e o cabeçalho <code>Host</code>, eles podem até compartilhar o mesmo
+        endereço IP.
+    </p>
+    </section>
+    <section>
+      <h2>Proxies</h2>
+      <p>Entre o navegador Web e o servidor, vários computadores e máquinas transmitem as mensagens HTTP.
+          Devido a
+          estrutura em camadas da pilha Web, a maioria dessas máquinas operam em alguma das camadas: de
+          transporte, de
+          rede ou física, sendo transparente na camada da aplicação HTTP, e potencialmente exercendo um
+          grande impacto
+          na performance. Essas máquinas que operam na camada de aplicação são normalmente conhecidas como
+          proxies (ou
+          representantes, ou procuradores, etc). Eles podem ser transparentes ou não (alterações nas
+          requisições não
+          passam por eles), e podem desempenhar várias funções:</p>
+      <ol>
+          <li>cacheamento (o cache pode ser público ou privado, como o cache dos navegadores)</li>
+          <li>filtragem (como um scanner de antivírus, controle de acesso, etc)</li>
+          <li>balanceamento de carga (para permitir que vários servidores possam responder a diferentes
+              requisições)</li>
+          <li>autenticação (para controlar quem tem acesso aos recursos)</li>
+          <li>autorização (para controlar quem tem acesso a determinada informação)</li>
+          <li>registro de informação (permite o armazenamento de informações de histórico)</li>
+      </ol>
+    </section>
+    <section>
+      <h2>Aspectos básicos do HTTP</h2>
+        <h4>HTTP é simples</h4>
+        <p>Mesmo com mais complexidade introduzida no HTTP/2.0 por encapsular mensagens HTTP em quadros
+            (frames), o HTTP foi projetado para ser simples e legível às pessoas. As mensagens HTTP podem
+            ser lidas e entendidas por qualquer um, provendo uma maior facilidade para desenvolvimento e
+            testes, e reduzir a complexidade para os estudantes.</p>
+        <h4>HTTP é extensível</h4>
+        <p>Introduzidos no HTTP/1.0, os cabeçalhos HTTP fazem com que este protocolo seja fácil para estender e usá-lo
+            para experimentos. Novas funcionalidades podem até ser introduzidas pelo simples acordo entre um cliente e
+            um servidor sobre a nova semântica de um cabeçalho.</p>
+        <h4>HTTP não tem estado, mas tem sessões</h4>
+        <p>HTTP é sem estado: não existe uma relação entre duas requisições sendo feitas através da mesma conexão. Isso
+            traz um problema imediato para usuários que interagem com algumas páginas de forma coerente, por exemplo,
+            usando um carrinho de compras de e-commerces*. Mas como o fundamento básico do HTTP é não manter estados,
+            cookies HTTP permitem que as sessões tenham estados. Usando a extensibilidade dos cabeçalhos, os cookies são
+            adicionados ao fluxo do HTTP, permitindo que a criação de sessão em cada requisição HTTP compartilhem o
+            mesmo contexto, ou o mesmo estado.</p>
+        <h4>HTTP e conexões</h4>
+
+        <p>Uma conexão é controlada na camada de transporte, e portanto fundamentalmente fora do controle do HTTP.
+            Entretanto o HTTP não requer que o protocolo de transporte utilizado seja baseado em conexões, só requer que
+            seja confiável ou não perca mensagens (sem pelo menos apresentar erros). Dentre os dois protocolos de
+            transporte mais comuns na internet, o TCP é confiável e o UDP não. Portanto, o HTTP utiliza o padrão TCP,
+            que é baseado em conexão, mesmo que nem sempre seja obrigatório o uso de uma conexão.
+        </p>
+        <p>No protocolo HTTP/1.0 uma conexão TCP era aberta para cada par de requisição/resposta trocada, introduzindo
+            duas grandes falhas: abrir uma conexão requer várias viagens de ida/volta de mensagens, e portanto é lento,
+            mas se torna mais eficiente quando mensagens são enviadas em maior número ou maior frequência: "conexões
+            quentes" são mais eficientes que "conexões frias" (que envia poucas mensagens ou com baixa frequência).</p>
+        <p>Para contornar essas falhas, o protocolo HTTP/1.1 introduziu o conceito de linhas de produção (ou pipelining)
+            — que se provou difícil de ser implementado — e conexões persistentes: as conexões TCPs feitas embaixo,
+            podem ser parcialmente controladas usando o cabeçalho HTTP <code>Connection</code>. O HTTP/2.0 foi mais
+            além, multiplexando várias mensagens através de uma única conexão, ajudando a manter a conexão mais quente,
+            e mais eficiente.</p>
+        <p>Experimentos estão sendo feitos para projetar um protocolo de transporte mais adequado para o HTTP. Por
+            exemplo, a Google está fazendo testes com o QUIC que é construído sobre o UDP para prover um protocolo de
+            transporte mais confiável e eficiente.</p>
+        <h2>O que pode ser controlado pelo HTTP?</h2>
+        <p>A natureza extensível do HTTP tem permitido mais controle e funcionalidade para a internet, ao longo do
+            tempo. Cache e autenticação são funcionalidades suportadas desde o início da história do HTTP. A habilidade
+            de relaxar as restrições na origem, em contraste, foi adicionada nos anos 2010s.</p>
+        <p>Aqui está uma lista de funcionalidades comuns, controláveis com HTTP:</p>
+        <ul>
+            <li>
+                <h4>Cache</h4>
+                <p>A forma como documentos são cacheados pode ser controlada pelo HTTP. O servidor pode instruir
+                    proxies, e clientes, ao que cachear e por quanto tempo. O cliente pode instruir proxies de cache
+                    intermediários a ignorar o documento armazenado.</p>
+            </li>
+            <li>
+                <h4>Relaxamento das restrições na origem</h4>
+                <p>Para prevenir bisbilhoteiros e outros invasores de privacidade, os navegadores reforçam estritamente
+                    a separação dos sites Web. Somente páginas de mesma origem podem acessar todas as informações de uma
+                    página Web. Apesar dessa restrição ser um fardo grande aos servidores, os cabeçalhos HTTP podem
+                    relaxar essa separação estrita no lado dos servidores, permitindo que um documento ser composto por
+                    várias fontes de informação em outros domínios (e pode até ter razões específicas de segurança para
+                    se fazer isso), como um tecido de retalhos.</p>
+            </li>
+            <li>
+                <h4>Autenticação</h4>
+                <p>Algumas páginas podem ser protegidas para que apenas usuários específicos possam acessá-la.
+                    Autenticação básica pode ser provida pelo HTTP, usando tanto o cabeçalho
+                    <code>WWW-Authenticate</code> e similares, quanto configurando uma sessão específica usando cookies
+                    HTTP.</p>
+            </li>
+            <li>
+                <h4>Proxy e tunelamento</h4>
+                <p>Servidores e/ou clientes estão frequentemente localizados em intranets e escondem seu verdadeiro
+                    endereço IP aos outros. Requisições HTTP recorrem aos proxies para contornar essa barreira na rede.
+                    Mas nem todos os proxies são proxies HTTP. O protocolo SOCKS, por exemplo, opera em um nível mais
+                    baixo. Outros protocolos, como ftp, podem ser tratados por esses proxies.</p>
+            </li>
+            <li>
+                <h4>Sessões</h4>
+                <p>Usando os cookies HTTP, permite que você crie vincule às requisições o estado do servidor. Isso cria
+                    as sessões, apesar do protocolo HTTP básico não manter estado. Isso é útil não só para os carrinhos
+                    de compras de e-commerces, mas também para qualquer site que permita customização das respostas a
+                    nível de usuário.</p>
+            </li>
+
+        </ul>
+    </section>
+  </main>
+
+
+  <footer class="page-footer indigo darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">HTTP Wiki</h5>
+          <p class="grey-text text-lighten-4">A sua wikipédia sobre HTTP na web :)</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="visao-geral.html">Visão Geral</a></li>
+            <li><a class="grey-text text-lighten-3" href="cabecalhos.html">Cabeçalhos HTTP</a></li>
+            <li><a class="grey-text text-lighten-3" href="requisicoes-http.html">Requisições HTTP</a></li>
+            <li><a class="grey-text text-lighten-3" href="cookies.html">Cookies HTTP</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container center">
+      © 2019 - João Vitor Barbosa Souza
+      </div>
+    </div>
+  </footer>
+</body>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="assets/js/init.js"></script>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTTP Wiki</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="assets/css/init.css">
+</head>
+<body>
+  <header>
+    <section class="navbar">
+      <nav class="indigo darken-4">
+        <div class="nav-wrapper">
+          <a href="index.html" class="brand-logo">HTTP Wiki</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="visao-geral.html">Visão Geral</a></li>
+            <li class="active"><a href="cabecalhos.html">Cabeçalhos HTTP</a></li>
+            <li><a href="collapsible.html">Requisições HTTP</a></li>
+            <li><a href="cookies.html">Cookies HTTP</a></li>
+          </ul>
+        </div>
+      </nav>
+      <ul class="sidenav" id="mobile-demo">
+        <li class="active"><a href="visao-geral.html">Visão Geral</a></li>
+        <li><a href="cabecalhos.html">Cabeçalhos HTTP</a></li>
+        <li><a href="collapsible.html">Requisições HTTP</a></li>
+        <li><a href="cookies.html">Cookies HTTP</a></li>
+      </ul>    
+    </section>
+  </header>
+
+  <main class="container">
+      <h2>Cabeçalhos HTTP</h2>
+      <p>Os cabeçalhos HTTP permitem que o cliente e o servidor passem informações adicionais com a solicitação ou a
+          resposta HTTP. Um cabeçalho de solicitação é composto por seu nome case-insensitive (não diferencia letras
+          maiúsculas e minúsculas), seguido por dois pontos ':' e pelo seu valor (sem quebras de linha). Espaços em
+          branco antes do valor serão ignorados.</p>
+      <p>Cabeçalhos proprietários personalizados podem ser adicionados usando o prefixo 'X-', mas essa convenção foi
+          depreciada em Junho de 2012, devido aos inconvenientes que causou quando os campos não-padronizados
+          tornaram-se padronizados na RFC 6648; outros estão listados em um registro IANA, cujo o conteúdo original
+          foi definido na RFC 4229. O IANA também mantém o registro das propostas de novas mensagens de cabeçalhos
+          HTTP.</p>
+      <p>Cabeçalhos podem ser classificados de acordo com os seus contextos:</p>
+      <ul>
+          <li>Cabeçalho genérico: Cabeçalhos que podem ser usados tanto em solicitações quanto em respostas, porém sem
+              relação com os dados eventualmente transmitidos no corpo da mensagem.</li>
+          <li>Cabeçalho de solicitação: Cabeçalhos contendo mais informação sobre o recurso a ser obtido ou sobre o
+              próprio cliente.</li>
+          <li>Cabeçalho de resposta: Cabeçalhos contendo informação adicional sobre a solicitação, como a sua
+              localização ou sobre o servidor.</li>
+          <li>Cabeçalho de entidade: Cabeçalhos contendo mais informação sobre o conteúdo da entidade, como o tamanho
+              do conteúdo ou o seu MIME-type.</li>
+      </ul>
+      <p>Cabeçalhos também podem ser classificados de acordo com a forma que são manipulados por proxies.</p>
+      <h3>End-to-end headers</h3>
+      <p class="p3">Esses cabeçalhos devem ser transmitidos para o destinatário final da mensagem; isso é, o servidor
+          em caso de
+          solicitação ou o cliente caso resposta. Proxies intermediários devem reenviar cabeçalhos de end-to-end sem
+          alterações e caches devem armazená-los.</p>
+      <h3>Hop-by-hop headers</h3>
+      <p class="p3">Esses cabeçalhos são significativos apenas para uma única conexão a nível de transporte e não
+          devem ser
+          reenviados por proxies ou armazenados em cache. Tais cabeçalhos são: Connection, Keep-Alive,
+          Proxy-Authenticate, Proxy-Authorization, TE, Trailer, Transfer-Encoding and Upgrade. Observe que apenas
+          cabeçalhos hop-by-hop podem ser definidos utilizando o cabeçalho genérico Connection.</p>
+      <p>A lista a seguir resume os cabeçalhos HTTP pela categoria de uso.</p>
+
+      <h2>Autenticação</h2>
+      <h5><code>WWW-Authenticate</code></h5>
+      <p class="p3">Define o método de autenticação que deve ser utilizado para conseguir acesso ao recurso.</p>
+      <h5><code>Authorization</code></h5>
+      <p class="p3">Contém as credenciais para autenticar um User-Agent com o servidor.</p>
+      <h5><code>Proxy-Authenticate</code></h5>
+      <p class="p3">Define o método de autenticação que deve ser utilizado para conseguir acesso ao recurso por trás
+          de um servidor Proxy.</p>
+      <h5><code>Proxy-Authorization</code></h5>
+      <p class="p3">Contém as credenciais para autenticar um User-Agent com o servidor Proxy.</p>
+
+      <h2>Caching</h2>
+      <h5><code>Age</code></h5>
+      <p>O tempo em segundos em que o objeto esteve em um cache de proxy.</p>
+      <h5><code>Cache-Control</code></h5>
+      <p>Especifica diretivas para mecanismos de cache em requisições e respostas.</p>
+      <h5><code>Expires
+          </code></h5>
+      <p>A data/hora depois que a resposta é considerada obsoleta.</p>
+      <h5><code>Pragma</code></h5>
+      <p>Cabeçalho específico da implementação que pode ter varios efeitos em qualquer lugar ao longo da sequência de
+          requisição-resposta. Usado para compatibilidade de versões anteriores com caches HTTP/1.0 onde o header
+          Cache-Control ainda não está presente.</p>
+      <h5><code>Warning</code></h5>
+      <p>Um campo de alerta geral contendo informações sobre possíveis problemas.</p>
+
+      <h2>Client hints</h2>
+      <h5><code>Accept-CH</code></h5>
+      <h5><code>Content-DPR</code></h5>
+      <h5><code>DPR</code></h5>
+      <h5><code>Downlink</code></h5>
+      <h5><code>Save-Data</code></h5>
+      <h5><code>Viewport-Width</code></h5>
+      <h5><code>Width</code></h5>
+      <h2>Condicionais</h2>
+      <h5><code>Last-Modified</code></h5>
+      <p>É um validador, a última data de modificação de um recurso, usado para comparar várias versões de um mesmo
+          recurso. É menos preciso que o ETag, mas é mais fácil calcular em alguns ambientes. Requisições condicionais
+          usando If-Modified-Since e If-Unmodified-Since usam esse valor para modificar o comportamento da requisição.
+      </p>
+      <h5><code>Etag</code></h5>
+      <p>É um validador, uma string única identificando a versão do recurso. Requisições condicionais usando If-Match
+          e If-None-Match usam esse valor para modificar o comportamento da requisição.</p>
+      <h5><code>If-Match</code></h5>
+      <p>Faz a requisição condicional e aplica o método apenas se o recurso armazenado corresponder a uma das ETags
+          fornecidas.</p>
+      <h5><code>If-None-Match</code></h5>
+      <p>Faz a requisição condicional e aplica o método apenas se o recurso armazenado não corresponder a nenhuma das
+          ETags fornecidas. É usado para atualizar caches ( para requisições seguras), ou para prevenir o upload de um
+          novo recurso quando este já existe.</p>
+      <h5><code>If-Modified-Since </code></h5>
+      <p>Faz a requisição condicional e espera a entidade ser transmitida somente se tiver sido modificada após a data
+          especificada. É usado para transmitir dados somente se o cache estiver desatualizado.</p>
+      <h5><code>If-Unmodified-Since</code></h5>
+      <p>Faz a requisição condicional e espera a entidade ser transmitida somente se não tiver sido modificada após a
+          data especificada. É usado para garantir a coerência de um novo fragmento de um intervalo específico com os
+          anteriores, ou para implementar um Sistema de Controle de concorrência otimista ao modificar os documentos
+          existentes.</p>
+      <h2>Cookies</h2>
+      <h5><code>Cookie</code></h5>
+      <p>Contém cookies HTTP armazenados préviamente enviados pelo servidor com o cabeçalho Set-Cookie.</p>
+      <h5><code>Set-Cookie</code></h5>
+      <p>Envia cookies do servidor para o agente de usuário.
+      </p>
+      <h5><code>Cookie2</code></h5>
+      <p>Used to contain an HTTP cookie, previously sent by the server with the Set-Cookie2 header, but has been
+          obsoleted by the specification. Use Cookie instead.</p>
+      <h5><code>Set-Cookie2</code></h5>
+      <p>Used to send cookies from the server to the user agent, but has been obsoleted by the specification. Use
+          Set-Cookie instead.</p>
+  </main>
+
+
+  <footer class="page-footer indigo darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">HTTP Wiki</h5>
+          <p class="grey-text text-lighten-4">A sua wikipédia sobre HTTP na web :)</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="visao-geral.html">Visão Geral</a></li>
+            <li><a class="grey-text text-lighten-3" href="cabecalhos.html">Cabeçalhos HTTP</a></li>
+            <li><a class="grey-text text-lighten-3" href="collapsible.html">Requisições HTTP</a></li>
+            <li><a class="grey-text text-lighten-3" href="cookies.html">Cookies HTTP</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container center">
+      © 2019 - João Vitor Barbosa Souza
+      </div>
+    </div>
+  </footer>
+</body>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="assets/js/init.js"></script>
+</html>

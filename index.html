@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTTP Wiki</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="assets/css/init.css">
+</head>
+<body>
+  <header>
+    <section class="navbar">
+      <nav class="indigo darken-4">
+        <div class="nav-wrapper">
+          <a href="index.html" class="brand-logo">HTTP Wiki</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="visao-geral.html">Visão Geral</a></li>
+            <li><a href="cabecalhos.html">Cabeçalhos HTTP</a></li>
+            <li><a href="requisicoes-http.html">Requisições HTTP</a></li>
+            <li><a href="cookies.html">Cookies HTTP</a></li>
+          </ul>
+        </div>
+      </nav>
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="visao-geral.html">Visão Geral</a></li>
+        <li><a href="cabecalhos.html">Cabeçalhos HTTP</a></li>
+        <li><a href="requisicoes-http.html">Requisições HTTP</a></li>
+        <li><a href="cookies.html">Cookies HTTP</a></li>
+      </ul>    
+    </section>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+        <h2><strong>HTTP</strong> ou <i>Hypertext Transfer Protocol</i></h2>
+        <p>
+            Um protocolo de camada de aplicação para transmissão de documentos hipermídia, como o HTML. Foi desenvolvido 
+            para comunicação entre navegadores web e servidores web, porém pode ser utilizado para outros propósitos também. 
+            Segue um modelo cliente-servidor clássico, onde um cliente abre uma conexão, executa uma requisição e espera até receber uma resposta. 
+            É também um protocolo sem estado ou stateless protocol, que significa que o servidor não mantem nenhum dado entre duas requisições (state). 
+            Apesar de ser frequentemente baseado em uma camada TCP/IP, pode ser utilizado em qualquer camada de transporte 
+            confiável, ou seja, um protocolo que não perde mensagens silenciosamente como o UDP.
+        </p>
+    </section>
+    <section class="cards">
+      <h3>Saiba mais</h3>
+      <div class="row">
+        <div class="col s12 m3">
+          <div class="card hoverable">
+            <div class="card-image">
+              <img src="assets/img/http.jpg" class="responsive-img">
+              <a class="btn-floating halfway-fab waves-effect waves-light indigo darken-4" href="visao-geral.html"><i class="material-icons">chevron_right</i></a>
+            </div>
+            <div class="card-content">
+              <span class="card-title">Visão Geral do HTTP</span>
+              <p>HTTP é um protocolo (protocol) que permite a obtenção de recursos, tais como documentos HTML. É a base 
+                de qualquer troca de dados na Web e um protocolo cliente-servidor,o que significa que as requisições são 
+                iniciadas pelo destinatário, geralmente um navegador da Web. Um documento completo é reconstruído a partir 
+                dos diferentes sub-documentos obtidos, como por exemplo texto, descrição do layout, imagens, vídeos, scripts 
+              e muito mais.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m3">
+          <div class="card hoverable">
+            <div class="card-image">
+              <img src="assets/img/header.png">
+              <a class="btn-floating halfway-fab waves-effect waves-light indigo darken-4" href="cabecalhos.html"><i class="material-icons">chevron_right</i></a>
+            </div>
+            <div class="card-content">
+              <span class="card-title">Cabeçalhos HTTP</span>
+              <p>As mensagens de cabeçalho HTTP são utilizadas para realizar a descrição de algum recurso ou comportamento do cliente ou servidor. 
+                Propriedades customizadas nos cabeçalhos utilizam o prefixo 'X-' ; Outras no registro IANA, cujo conteúdo original foi definido na RFC 4229. 
+                IANA também mantém o registro de novas propostas para mensagens de cabeçalhos HTTP.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m3">
+          <div class="card hoverable">
+            <div class="card-image">
+              <img src="assets/img/requisicoes-http.png">
+              <a class="btn-floating halfway-fab waves-effect waves-light indigo darken-4"><i class="material-icons">chevron_right</i></a>
+            </div>
+            <div class="card-content">
+              <span class="card-title">Requisições HTTP</span>
+              <p>As mais diferentes requisições podem ser utilizadas pelos métodos de requisições HTTP: GET e POST, 
+                mas também algumas requisições menos comuns pelos métodos OPTIONS, DELETE ou TRACE.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m3">
+          <div class="card hoverable">
+            <div class="card-image">
+              <img src="assets/img/cookie.jpg">
+              <a class="btn-floating halfway-fab waves-effect waves-light indigo darken-4" href="cookies.html"><i class="material-icons">chevron_right</i></a>
+            </div>
+            <div class="card-content">
+              <span class="card-title">Cookies HTTP</span>
+              <p>O funcionamento dos cookies é definido pela RFC 6265. Ao receber uma requisição HTTP, o servidor pode enviar
+                 um cabeçalho Set-Cookie com a resposta. Depois, o cliente retorna o valor do cookie a cada requisição ao 
+                 mesmo servidor na forma de um cabeçalho Cookie HTTP. O cookie também pode ser configurado para expirarem 
+                 um determinado tempo ou permanecer restrito a um domínio ou endereço específicos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <footer class="page-footer indigo darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">HTTP Wiki</h5>
+          <p class="grey-text text-lighten-4">A sua wikipédia sobre HTTP na web :)</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="visao-geral.html">Visão Geral</a></li>
+            <li><a class="grey-text text-lighten-3" href="cabecalhos.html">Cabeçalhos HTTP</a></li>
+            <li><a class="grey-text text-lighten-3" href="requisicoes-http.html">Requisições HTTP</a></li>
+            <li><a class="grey-text text-lighten-3" href="cookies.html">Cookies HTTP</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container center">
+      © 2019 - João Vitor Barbosa Souza
+      </div>
+    </div>
+  </footer>
+</body>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="assets/js/init.js"></script>
+</html>
